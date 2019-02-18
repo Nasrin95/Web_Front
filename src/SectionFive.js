@@ -29,28 +29,31 @@ export default class SectionFive extends Component{
                         <Text style = {styles.textTwo} >{item.mainText}</Text>
                         </View> 
 
-                        <View style = {styles.rowOne}>
-                           <View style = {{flexDirection :'row'}}>
+                        <View style = {[styles.rowOne , {  justifyContent :'flex-start' ,}]}>
+                           <View style = {{flexDirection :'row' , flex :4   }}>
                                 {item.profit ? (
                                     <View style ={styles.smallView} >
                                         <Image style = {styles.smallImage}
                                         source = {require('./accest/icons/p.png')}/>
                                         <Text style = {styles.greenText}>{item.profitText}</Text>
+                                        <Text style = {styles.finalText}> {item.lastText}</Text> 
                                     </View>
                                 ): (
                                     <View style ={styles.smallView} >
                                         <Image style = {styles.smallImage}
                                         source = {require('./accest/icons/n.png')}/>
                                         <Text style = {styles.redText}>{item.profitText}</Text>
+                                        <Text style = {styles.finalText}> {item.lastText}</Text> 
                                     </View>
                                 )}
                                 
-                                <Text style = {styles.finalText}> {item.lastText}</Text>
+                                {/* <View style = {{flex : 2,}} >
+                                    <Text style = {styles.finalText}> {item.lastText}</Text> 
+                                </View> */}
                             </View>
                             
                             {item.img2B ?(
-                                <View>
-                                       
+                                <View style = {{flex : 1}}>
                                    {item.selected ?(
                                     <View style ={{
                                         width:50, 
@@ -79,7 +82,7 @@ export default class SectionFive extends Component{
                                    }
                                 </View>
                             ): (
-                                <View></View>
+                                <View style = {{flex : 0}}></View>
                             )
                             }
                             
@@ -101,12 +104,15 @@ const styles = StyleSheet. create({
         
     },
     stickyStyle:{
-        width : 365, 
-        height :200 , 
+        // width : 365, 
+        // height :200 , 
+        flex : 1,
         borderRadius : 20,
+        // backgroundColor : 'red',
         //  justifyContent : 'center' ,
         backgroundColor :'white' , 
-        marginTop : 50,
+        margin : 30,
+        paddingVertical : 30,
         
      },
      rowOne:{
@@ -125,7 +131,7 @@ const styles = StyleSheet. create({
         fontSize : 17,
         fontWeight : '500' ,
         color : '#000000',
-        opacity : 0.65
+        opacity : 0.55
     },
     imageWithShadow :{ 
         width:45, 
@@ -147,9 +153,11 @@ const styles = StyleSheet. create({
         height : 20 
     },
     finalText :{ 
+        
         fontSize : 15 , 
         fontWeight : '400' , 
-        opacity : .85
+        opacity : .85,
+        
     },
     finalImage:{
         width:45, 
@@ -164,8 +172,9 @@ const styles = StyleSheet. create({
        shadowColor: '#ffffff'
     },
     smallView :{
+        flex : 1,
         flexDirection :'row' , 
-        alignItems : 'center',
-        justifyContent : 'center'
+        alignItems : 'flex-start',
+        // justifyContent : 'space-between'
     },
 })

@@ -13,7 +13,7 @@ export const data = [
 
     {'date' : 'Media Posts (Last 30 Days)' , 'img1' :require('./accest/icons/2.png') , 
     'viewColor' : '#ffeeff', 'mainText' : '178' , 'profit' : false , 'profitText' :'-1,10%' , 'lastText': 'less posts than usual',
-    'img2B': true , 'view2Color' : '#ffffff', 'img2':require('./accest/icons/4.png') , 'selected' : true},
+    'img2B': true , 'view2Color' : '#ffffff', 'img2':require('./accest/icons/4.png') , 'selected' : false},
     
     {'date' : 'Media Posts (Last 30 Days)' , 'img1' :require('./accest/icons/1.png') , 
     'viewColor' : '#ff0080', 'mainText' : '178' , 'profit' : true , 'profitText' :'+0,8%' , 'lastText': 'less posts than usual',

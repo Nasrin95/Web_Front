@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {View , Text , StyleSheet , FlatList ,Image , TouchableHighlight} from 'react-native';
+import {View , Text , StyleSheet , Image , TouchableHighlight} from 'react-native';
 
 export default class BioComponent extends Component{
+    onPress = () => {}
     render(){
         return(
             <View style = {styles.container} >
@@ -20,12 +21,19 @@ export default class BioComponent extends Component{
                         </View>
                     </View>
                     <View style = {styles.State12} >
-                        <View style = {styles.State121}>
-                             <Text style = {styles.textThree} >LifeStyle</Text>
-                        </View>
-                        <View style = {styles.State121}>
-                             <Text style = {styles.textThree} >Music</Text>
-                        </View>
+                        <TouchableHighlight onPress = {this.onPress}
+                        style = {{borderRadius : 5,}}>
+                            <View style = {styles.State121}>
+                                <Text style = {styles.textThree} >LifeStyle</Text>
+                            </View>
+                        </TouchableHighlight>
+                        
+                        <TouchableHighlight onPress = {this.onPress}
+                            style = {{marginStart : 20 , borderRadius : 5,}}>
+                            <View style = {[styles.State121 ]}>
+                                <Text style = {styles.textThree} >Music</Text>
+                            </View>
+                        </TouchableHighlight>
                     </View>
                 </View>
 
@@ -128,6 +136,7 @@ const styles = StyleSheet. create({
         width : 200,
         alignItems : 'center',
         flexDirection : 'row',
+    justifyContent : 'space-between'
         // backgroundColor: 'blue',
     },
     State121 :{
@@ -137,7 +146,7 @@ const styles = StyleSheet. create({
         justifyContent : 'center',
         backgroundColor : '#efefef',
         borderRadius : 4,
-        marginStart : 20
+        // marginStart : 20
     },
     textThree :{
         // backgroundColor : '#9e9e9e',

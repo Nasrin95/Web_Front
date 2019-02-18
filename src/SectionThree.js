@@ -1,19 +1,43 @@
 import React, { Component } from 'react';
-import {View , Text , StyleSheet , FlatList ,Image , TouchableHighlight} from 'react-native';
+import {View , Text , StyleSheet , Picker , TouchableHighlight} from 'react-native';
+import {contex} from './contexComponet'
 
 export default class SectionThree extends Component{
+    constructor (props){
+        super(props);
+        this.state = {
+            contex : contex,
+            count :'',
+            selectedC :''
+        }
+    }
     render (){
         return (
             <View style = {styles .containerOrigin} >
                <View style = {styles .container}>
-                <View style = {styles.tectContainer}>
+               {
+                    this.state.contex.map((item,id)=>(
+                    <TouchableHighlight 
+                    style = {styles.tectContainer}
+                    underlayColor = 'white'
+                    onPress = {() => this.setState({selectedc : item.id})}>
+                    
+                    <View style = {this.state.selectedc !== item.id ? styles.tectContainer :  [styles.tectContainer , {borderBottomWidth : 2 , borderBottomColor : 'blue'}]}>
+                        <Text style = {this.state.selectedc !== item.id ? styles.textFour : styles.fontStyle } >{item.text}</Text>
+                    </View>
+                    
+                    </TouchableHighlight>
+                ) )
+                }
+                    {/* <View style = {styles.tectContainer}>
                         <Text style = {styles.textFour} >Media(1K)</Text>
                     </View >
                     <View style = {[styles.tectContainer , {borderBottomWidth : 2 , borderBottomColor : 'blue'}]}>
                         <Text style = {styles.fontStyle} >Analytics</Text>
-                    </View>
+                    </View> */}
                </View>
-               <View style = {[styles .container ,{justifyContent : 'flex-end' , marginEnd : 40 , alignItems : 'center'}]}>
+               
+               {/* <View style = {[styles .container ,{justifyContent : 'flex-end' , marginEnd : 40 , alignItems : 'center'}]}>
                     
                     <Text style = {styles.textFour}>Date</Text>
                     <Text style = {[styles.fontStyle , {opacity : .6}]}> Last 30 Days</Text>
@@ -21,7 +45,21 @@ export default class SectionThree extends Component{
                     source = {require('./accest/icons/down-arrow.png')}
                     style ={styles.imageStyle} />
                 
-               </View>
+               </View> */}
+               <View style = {[styles .container , styles.pickerStyle , {height : 20,}]}>
+                    <Picker selectedValue = {this.state.language}
+                    // itemStyle={{ backgroundColor: "red"}} 
+                    style = {{borderColor : 'white',}}
+                    onValueChange = {itemValue => this.setState({count : itemValue})}>
+                     
+                     <Picker.Item label = "Date" value = "item one" />
+                    <Picker.Item label = "Date Last 30 Days" color="blue" value = "item one" />
+                    <Picker.Item label = "Date Last 20 Days" value = "item two" />
+                    <Picker.Item label = "Date Last 10 Days" color="blue" value = "item three" />
+                    <Picker.Item label = "Date Last 5 Days"  value = "item four" />
+                    </Picker>
+                
+                </View>
             </View>
         )
     }
@@ -41,6 +79,7 @@ const styles = StyleSheet. create({
         fontWeight: '450'
     },
     tectContainer :{
+        height : 40,
         marginStart : 35,
         alignItems : 'center',
     },
@@ -49,7 +88,13 @@ const styles = StyleSheet. create({
         fontSize : 18,
         fontWeight : '350',
     },
-
+    pickerStyle :{
+        justifyContent : 'flex-end' , 
+        marginEnd : 40 , 
+        alignItems : 'center',
+        
+        
+    },
     imageStyle :{
         width : 15,
         height :15,
