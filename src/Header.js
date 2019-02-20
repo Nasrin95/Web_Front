@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableHighlight, Animated } from 'react-native';
 import { data } from './DataComponet';
-
-export default class BioComponent extends Component{
+import{ fetchProducts} from './Service/action'
+import{connect} from 'react-redux'
+class Header extends Component{
 
     constructor(props) {
         super(props);
@@ -13,6 +14,9 @@ export default class BioComponent extends Component{
         selectedImage: 0,
         isFullWidth: false
         }
+    }
+    componentDidMount (){
+      this.props.fetchProducts()
     }
     toggleWidth() {
         const endWidth = this.state.isFullWidth ? 50 : 165;
@@ -141,3 +145,5 @@ const styles = StyleSheet.create({
     },
 }
 )
+
+export default  connect (null ,{ fetchProducts})(Header);

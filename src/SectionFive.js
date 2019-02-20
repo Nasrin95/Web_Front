@@ -1,93 +1,96 @@
 import React, { Component } from 'react';
 import {View , Text , StyleSheet , FlatList ,Image } from 'react-native';
-import {data}  from './Sticky'
+import{connect} from 'react-redux'
+// import {data}  from './Sticky'
 
 
-export default class SectionFive extends Component{
+class SectionFive extends Component{
     render (){
         return (
             <View style = {styles .containerOrigin}>
+            
                 <FlatList
-                    data = {data}
+                    data = {this.props.data}
                     style={{ flex : 1 ,  }}
                     keyExtractor={item => item}
                     horizontal={false}
                     numColumns = {3}
                     columnWrapperStyle={{justifyContent : 'space-between'}}
                     renderItem={({item}) =>( 
-                    <View style = {styles.stickyStyle}>
-                        <View style = {styles.rowOne} >
-                            <Text style = {styles.textOne} >{item.date}</Text>
-                            <View style ={{width:50, height:50 ,borderRadius : 50 , justifyContent :'center'  , alignItems : 'center', backgroundColor : item.viewColor}}>
-                                <Image style ={{width:45, height:45}}
-                                source = {item.img1}/>
-                            </View>
+                        <Text style = {styles.textOne} >{item.login}</Text>
+                //     <View style = {styles.stickyStyle}>
+                //         <View style = {styles.rowOne} >
+                //             <Text style = {styles.textOne} >{item.login}</Text>
+                //             <View style ={{width:50, height:50 ,borderRadius : 50 , justifyContent :'center'  , alignItems : 'center', backgroundColor : item.viewColor}}>
+                //                 <Image style ={{width:45, height:45}}
+                //                 source = {item.img1}/>
+                //             </View>
 
-                        </View > 
+                //         </View > 
                            
-                        <View style = {{marginStart : 20}}>
-                        <Text style = {styles.textTwo} >{item.mainText}</Text>
-                        </View> 
+                //         <View style = {{marginStart : 20}}>
+                //         <Text style = {styles.textTwo} >{item.mainText}</Text>
+                //         </View> 
 
-                        <View style = {[styles.rowOne , {  justifyContent :'flex-start' ,}]}>
-                           <View style = {{flexDirection :'row' , flex :4   }}>
-                                {item.profit ? (
-                                    <View style ={styles.smallView} >
-                                        <Image style = {styles.smallImage}
-                                        source = {require('./accest/icons/p.png')}/>
-                                        <Text style = {styles.greenText}>{item.profitText}</Text>
-                                        <Text style = {styles.finalText}> {item.lastText}</Text> 
-                                    </View>
-                                ): (
-                                    <View style ={styles.smallView} >
-                                        <Image style = {styles.smallImage}
-                                        source = {require('./accest/icons/n.png')}/>
-                                        <Text style = {styles.redText}>{item.profitText}</Text>
-                                        <Text style = {styles.finalText}> {item.lastText}</Text> 
-                                    </View>
-                                )}
+                //         <View style = {[styles.rowOne , {  justifyContent :'flex-start' ,}]}>
+                //            <View style = {{flexDirection :'row' , flex :4   }}>
+                //                 {item.profit ? (
+                //                     <View style ={styles.smallView} >
+                //                         <Image style = {styles.smallImage}
+                //                         source = {require('./accest/icons/p.png')}/>
+                //                         <Text style = {styles.greenText}>{item.profitText}</Text>
+                //                         <Text style = {styles.finalText}> {item.lastText}</Text> 
+                //                     </View>
+                //                 ): (
+                //                     <View style ={styles.smallView} >
+                //                         <Image style = {styles.smallImage}
+                //                         source = {require('./accest/icons/n.png')}/>
+                //                         <Text style = {styles.redText}>{item.profitText}</Text>
+                //                         <Text style = {styles.finalText}> {item.lastText}</Text> 
+                //                     </View>
+                //                 )}
                                 
-                                {/* <View style = {{flex : 2,}} >
-                                    <Text style = {styles.finalText}> {item.lastText}</Text> 
-                                </View> */}
-                            </View>
+                //                 {/* <View style = {{flex : 2,}} >
+                //                     <Text style = {styles.finalText}> {item.lastText}</Text> 
+                //                 </View> */}
+                //             </View>
                             
-                            {item.img2B ?(
-                                <View style = {{flex : 1}}>
-                                   {item.selected ?(
-                                    <View style ={{
-                                        width:50, 
-                                        height:50 ,
-                                        borderRadius : 50 , 
-                                        justifyContent :'center'  ,
-                                        alignItems : 'center', 
-                                        // borderWidt : 15,
-                                        // borderColor : '#ffffff',
-                                        backgroundColor : item.view2Color , 
-                                        shadowOffset:{  width: 0,  height: 15,  },
-                                        shadowColor: '#9e9e9e',
-                                        shadowOpacity: 0.2,}
-                                    }>
-                                    <View style ={styles.shadowStyle}>
-                                            <Image style ={styles.imageWithShadow}
-                                            source = {item.img2}/>
-                                        </View>
-                                    </View>
-                                   ) :(
-                                    <View style ={{width:50, height:50  ,borderRadius : 50 , justifyContent :'center'  , alignItems : 'center', backgroundColor : item.view2Color}}>
-                                        <Image style ={styles.finalImage}
-                                        source = {item.img2}/>
-                                         </View>
-                                   )
-                                   }
-                                </View>
-                            ): (
-                                <View style = {{flex : 0}}></View>
-                            )
-                            }
+                //             {item.img2B ?(
+                //                 <View style = {{flex : 1}}>
+                //                    {item.selected ?(
+                //                     <View style ={{
+                //                         width:50, 
+                //                         height:50 ,
+                //                         borderRadius : 50 , 
+                //                         justifyContent :'center'  ,
+                //                         alignItems : 'center', 
+                //                         // borderWidt : 15,
+                //                         // borderColor : '#ffffff',
+                //                         backgroundColor : item.view2Color , 
+                //                         shadowOffset:{  width: 0,  height: 15,  },
+                //                         shadowColor: '#9e9e9e',
+                //                         shadowOpacity: 0.2,}
+                //                     }>
+                //                     <View style ={styles.shadowStyle}>
+                //                             <Image style ={styles.imageWithShadow}
+                //                             source = {item.img2}/>
+                //                         </View>
+                //                     </View>
+                //                    ) :(
+                //                     <View style ={{width:50, height:50  ,borderRadius : 50 , justifyContent :'center'  , alignItems : 'center', backgroundColor : item.view2Color}}>
+                //                         <Image style ={styles.finalImage}
+                //                         source = {item.img2}/>
+                //                          </View>
+                //                    )
+                //                    }
+                //                 </View>
+                //             ): (
+                //                 <View style = {{flex : 0}}></View>
+                //             )
+                //             }
                             
-                        </View> 
-                   </View>
+                //         </View> 
+                //    </View>
                 )}
                 />
 
@@ -178,3 +181,15 @@ const styles = StyleSheet. create({
         // justifyContent : 'space-between'
     },
 })
+
+const mapStateToProps=(state)=>{
+    return{
+        data : state.item,
+        loading : state.loading
+    }
+
+}
+
+
+
+export default connect(mapStateToProps,{})(SectionFive)
