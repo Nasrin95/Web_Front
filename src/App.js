@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import {View , StyleSheet } from 'react-native';
 import Header from './Header'
 import Main from './Main'
+import Upmain from './Upmain'
 import { createStore , applyMiddleware  } from 'redux'
 import {Provider}  from 'react-redux'
 import reducer from './Service/reducer'
@@ -18,7 +19,11 @@ class App extends Component {
     return (
       <Provider style={styles.container} store={store}>
         <Header/>
-        <Main/>
+        <View style = {styles.mainStyle} >
+          <Upmain />
+          <Main />
+        </View>
+        
       </Provider>
     );
   }
@@ -29,6 +34,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
+  mainStyle: {
+    flex: 1,
+    // backgroundColor : "yellow"
+},
 })
 
 export default App;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View , Text , StyleSheet , FlatList ,Image , TouchableHighlight , ScrollView} from 'react-native';
+import {View , Text , StyleSheet } from 'react-native';
 
 export default class SectionFour extends Component{
     render (){

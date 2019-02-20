@@ -1,12 +1,20 @@
-import { SET_ITEM , FETCH_PRODUCTS_BEGIN , FETCH_PRODUCTS_SUCCESS , FETCH_PRODUCTS_FAILURE } from "./type";
-// import {store} from '../page/App1'
+import {SET_REMOVEITEM , SEARCH_ITEM , FETCH_PRODUCTS_BEGIN , FETCH_PRODUCTS_SUCCESS , FETCH_PRODUCTS_FAILURE } from "./type";
 
 
-const setItemAction = (text) => {
+
+const setSearchAction = (text) => {
     return{
-        type : SET_ITEM,
+        
+        type : SEARCH_ITEM,
         payload : text
     }
+}
+
+const setRemoveAction = index => {
+  return{
+    type : SET_REMOVEITEM,
+    payload : index
+}
 }
 
 
@@ -36,9 +44,15 @@ const setItemAction = (text) => {
 
 
 
-export const  setItem = text => {
-    return setItemAction(text);
-} ;
+export const setRemoveItem = index => {
+  
+    return setRemoveAction (index)
+}
+
+export const setSearchItem = text => {
+
+    return setSearchAction (text);
+};
 
 export const fetchProducts = () => {
     

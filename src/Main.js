@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableHighlight, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableHighlight, Animated } from 'react-native';
 import { data } from './DataComponet';
 import Header from './Header'
 import BioComponent from './BioComponent'
 import SectionThree from './SectionThree'
 import SectionFour from './SectionFour'
 import SectionFive from './SectionFive'
-import { users } from './usersComponet'
-import{connect} from 'react-redux'
+
+
 
 export default class Main extends Component{
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-        users: users,
-        selectedID: 2,
-        }
-    }
-    
-    
     onPressImage = () => { }
     
     render() {
@@ -28,52 +18,6 @@ export default class Main extends Component{
         return (
       
             <View style = {styles.mainStyle}>
-                <View style = {styles.section1}>
-                    <View style = {styles.section11} >
-                        <Image 
-                        style = {styles.instagramImageStyle}
-                        source = {require('./accest/icons/instagram.png')} />
-                        <View style ={{ marginTop : 7}}>
-                        <Text style = {styles.text11}> Search Instagram</Text>
-                        </View>
-                    </View>
-                    
-                    <View style = {styles.section12}>
-                        {
-                            this.state.users.map((item,id)=>(
-                                <TouchableHighlight 
-                                
-                                style = {styles.touchStyle}
-                                underlayColor = 'white'
-                                onPress = {() => this.setState({selectedID : item.id})}>
-                                <View style = {this.state.selectedID !== item.id ? styles.nikeStyle1 :  styles.nikeStyle2}>
-                                    <View style = {[styles.nikeStyle , {backgroundColor : item.color }]}>
-                                    <Image 
-                                    style = {styles.nikeImageStyle}
-                                    source = {item.userPic} />
-                                    {
-                                        item.istagram ?
-                                        ( <View style = {styles.smallHolder} >
-                                            <View style = {styles.smallImage} >
-                                            <Image 
-                                            source = {require('./accest/icons/instagram (1).png')}
-                                            style = {{width :20 , height : 20}} />
-                                            </View>
-                                        </View>)
-                                        :
-                                        (<View></View> )
-                                    }
-                                    </View>
-                                    
-                                </View>
-                                
-                            </TouchableHighlight>
-                        ) )
-                        }
-                        
-                    </View>
-    
-                </View>
                 <View style = {styles.section2}>
                     <View style = {styles.section21} >
                         <Image
@@ -123,134 +67,19 @@ export default class Main extends Component{
       
 const styles = StyleSheet.create({
 
-    instagramImageStyle: {
-        width: 30,
-        height: 30,
-        marginStart: 20,
-        opacity: .2
-    },
-
     profileStyle: {
         width: 150,
         height: 150,
         borderRadius: 100
     },
-    nikeImageStyle: {
-        width: 40,
-        height: 40,
-        // opacity:.6,
-        borderRadius: 50,
-    },
-    smallHolder: {
-        backgroundColor: 'white',
-        position: 'absolute',
-        marginStart: 20,
-        borderRadius: 50
-    },
-    smallImage: {
-        width: 20,
-        height: 20,
-        // opacity : .6,
-        borderRadius: 50,
-    },
-    smallImage2: {
-        width: 20,
-        height: 20,
-        marginBottom: 12,
-        borderRadius: 50,
-    },
-    imageStyle: {
-        width: 45,
-        height: 45,
-        borderRadius: 50,
-        marginBottom: 10
-    },
-
-    nikeStyle2: {
-
-        borderBottomColor: 'blue',
-        borderBottomWidth: 2,
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: 'center',
-        // marginStart : 20,
-        // backgroundColor : "red" ,
-        // opacity:.4 ,
-
-        width: 40,
-        height: 80
-    },
-    nikeStyle1: {
-
-        opacity: .3,
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: 'center',
-        // marginStart : 20,
-        // backgroundColor : "red" ,
-        // opacity:.4 ,
-
-        width: 40,
-        height: 80
-    },
-
-    nikeStyle: {
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: 'center',
-        // marginStart : 20,
-        // backgroundColor : "red" ,
-        // opacity:.4 ,
-        borderRadius: 50,
-        width: 40,
-        height: 40
-    },
-    asideStyle: {
-        width: 70,
-        alignItems: 'flex-start',
-        borderTopLeftRadius: 20
-
-    },
-
+ 
     mainStyle: {
-        flex: 15,
+        flex: 11,
         // backgroundColor : "yellow"
-    },
-    touchStyle: {
-        width: 40,
-        height: 80,
-        marginStart: 25
-    },
-
-    section1: {
-        flex: 2,
-        flexDirection: "row",
-        // backgroundColor : "yellow",
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginTop: 10
-    },
-    section11: {
-        width: 250,
-        marginStart: '15',
-        // flex : 1,
-        flexDirection: "row",
-        // backgroundColor : "yellow",
-        alignItems: 'flex-start',
-
-    },
-    section12: {
-        width: 200,
-        // marginStart :750,
-        // flex : 1,
-        marginEnd : 20,
-        flexDirection: "row",
-        // backgroundColor : "green",
-        alignItems: 'flex-start',
     },
 
     section2: {
-        flex: 8,
+        flex: 9,
         marginStart: 20,
         marginEnd: 20,
         flexDirection: "row",
@@ -264,7 +93,7 @@ const styles = StyleSheet.create({
         // backgroundColor :'red'
     },
     section22: {
-        flex: 6,
+        flex: 4,
         marginBottom: 15,
         // backgroundColor :'green'
     },
@@ -299,7 +128,7 @@ const styles = StyleSheet.create({
     },
 
     section3: {
-        flex: 1.5,
+        flex: 2,
         flexDirection: "row",
         // backgroundColor : "blue"
     },
@@ -310,7 +139,7 @@ const styles = StyleSheet.create({
         // backgroundColor : "pink"
     },
     section5: {
-        flex: 8,
+        flex: 9,
         flexDirection: "row",
         backgroundColor: 'rgb(240,240,240)',
     },
