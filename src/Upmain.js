@@ -115,14 +115,18 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     smallHolder: {
+        width: 29,
+        height: 29,
+        justifyContent : 'center',
         backgroundColor: 'white',
         position: 'absolute',
+        alignItems : 'center',
         marginStart: 20,
         borderRadius: 50
     },
     smallImage: {
-        width: 20,
-        height: 20,
+        width: 18,
+        height: 18,
         borderRadius: 50,
     },
     smallImage2: {

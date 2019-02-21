@@ -32,7 +32,12 @@ class Header extends Component{
     }
     render(){
         return(
-            <Animated.View style={[{ width: this.state.width }, styles.container]}>
+            <Animated.View style={[{ width: this.state.width ,
+                backgroundColor : this.state.width.interpolate({
+                inputRange : [50 ,75, 105 , 130 ,165],
+                outputRange : ['#ffffff' , '#eeeeee' ,'#dddddd' , '#eeeeee' , '#ffffff'],
+              }) 
+            }, styles.container]}>
             {!this.state.isFullWidth &&
             <TouchableHighlight
               underlayColor='white'
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     container : { 
         alignItems: 'flex-start', 
         overflow: 'hidden', 
-        borderTopLeftRadius: 20 
+        // borderTopLeftRadius: 20 
     },
  
     notPressedImage: {

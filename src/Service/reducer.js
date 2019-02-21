@@ -6,7 +6,7 @@ const initialState = {
     loading: false,
     error: null ,
     // id : 0 ,
-    item : []
+    item : [],
 }
 
 
@@ -19,10 +19,15 @@ function reducer(state = initialState, action) {
         case SET_REMOVEITEM:
             return {
                 ...state,
+                result : [
+                    ...state.result.slice(0 ,action.payload),
+                    ...state.result.slice(action.payload + 1 )
+                ],
                 item : [
-                    ...state.item.slice(0,action.payload),
+                    ...state.item.slice(0 ,action.payload),
                     ...state.item.slice(action.payload + 1 )
-                ]
+                ],
+            
             };
         case FETCH_PRODUCTS_BEGIN:
                 return {
@@ -38,7 +43,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 item: action.payload,
-                result: action.payload
+                result: action.payload,
             };
 
         case FETCH_PRODUCTS_FAILURE:
